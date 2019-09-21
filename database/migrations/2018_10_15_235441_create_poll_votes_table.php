@@ -14,7 +14,7 @@ class CreatePollVotesTable extends Migration
     public function up()
     {
         Schema::create('poll_votes', function (Blueprint $table) {
-            $table->char('poll_id', 12);
+            $table->uuid('poll_id');
             $table->unsignedInteger('poll_option_id');
 
             $table->foreign('poll_id')->references('id')->on('polls');

@@ -16,7 +16,7 @@ class CreatePollOptionsTable extends Migration
         Schema::create('poll_options', function (Blueprint $table) {
             $table->increments('id');
             $table->string('text');
-            $table->char('poll_id', 12);
+            $table->uuid('poll_id');
 
             $table->foreign('poll_id')->references('id')->on('polls');
         });

@@ -14,7 +14,7 @@ class CreatePollsTable extends Migration
     public function up()
     {
         Schema::create('polls', function (Blueprint $table) {
-            $table->char('id', 12);
+            $table->uuid('id');
             $table->string('question');
             $table->enum('duplicate_vote_checking', ['none', 'cookies', 'codes']);
             $table->boolean('allow_multiple_answers');

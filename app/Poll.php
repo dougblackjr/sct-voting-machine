@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Webpatser\Uuid\Uuid;
 use Carbon\Carbon;
 
 class Poll extends Model
@@ -11,6 +11,8 @@ class Poll extends Model
     public $timestamps = false;
 
     public $keyType = "string";
+
+    public $incrementing = false;
 
     public function __construct()
     {
@@ -21,14 +23,7 @@ class Poll extends Model
 
     private static function createId()
     {
-        //TODO: Check if id is unique
-
-        $characters = 'abcdefghijklmnopqrstuvwxyz';
-        $id = '';
-        for($i = 0; $i < 12; $i++) {
-            $id .= $characters[rand(0, strlen($characters) - 1)];
-        }
-        return $id;
+        return Uuid::generate()->string;
     }
 
     public function options()

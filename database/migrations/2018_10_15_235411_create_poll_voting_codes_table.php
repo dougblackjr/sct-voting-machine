@@ -16,7 +16,7 @@ class CreatePollVotingCodesTable extends Migration
         Schema::create('poll_voting_codes', function (Blueprint $table) {
             $table->char('id', 32);
             $table->boolean('used')->default(false);
-            $table->char('poll_id', 12);
+            $table->uuid('poll_id');
 
             $table->primary('id');
             // $table->foreign('poll_id')->references('id')->on('polls');
